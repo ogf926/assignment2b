@@ -5,17 +5,19 @@
 	</head>
 	<body>
 		<?php
-		    $servername="lovett.usask.ca";
+		    $servername="tnfq2gizwu.database.windows.net,1433";
 			$username="cmpt350_ogf926";
-			$password="e69ew1flri";
-			$dbname="cmpt350_ogf926";
+			$password="E69ew1flri";
+			$dbname="azuredb";
 			
-		    $conn = new mysqli($servername, $username, $password, $dbname);
-
-		    if($conn->connect_error)
-				die("Connection failed: ".$conn->connect_error);
-		    else
-				echo "Connection successfully</br>";
+		    try{
+                $conn = new PDO( "sqlsrv:Server= $server ; Database = $db ", $user, $pwd);
+                $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+                //echo "Connection successfully</br>";
+            }
+            catch(Exception $e){
+                die("Connection failed: ".print_r($e));
+            }
 			
 			$sql = "CREATE TABLE AddressBook(
 				id INT AUTO_INCREMENT PRIMARY KEY,
