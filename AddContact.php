@@ -24,9 +24,10 @@
 			
 	
 			// define variables and set to empty values
+			echo "above variables";
 			$fnameErr = $lnameErr = $emailErr = $bdayErr = $phnumErr = "";
 			$fname = $lname = $email = $cname = $notes = $phnum = $address = $bday = "";
-			
+			echo "above connection";
 			$sql = $conn->prepare("INSERT INTO AddressBook (firstname, lastname, company, phone, email, address, birthday, note) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 			$sql->bind_param("sssissss", $fname, $lname, $cname, $phnum, $email, $address, $bday, $notes);
 			
