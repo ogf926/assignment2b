@@ -11,19 +11,19 @@
 		<?php
 			
 		?>
-		<form action ="http://ogf926.azurewebsites.net/AddContact.php" method ="post">
+		<form action ="AddContact.php" method ="post">
 			<input type = 'submit' name = 'Add Contact' value = 'Add Contact' />
 			<br><br>
 		</form>
-		<form action ="http://ogf926.azurewebsites.net/DisplayContacts.php" method ="post">
+		<form action ="DisplayContacts.php" method ="post">
 			<input type = 'submit' name = 'DisplayContacts' value = 'Display Contacts' />
 			<br><br>
 		</form>
-		<form action ="http://ogf926.azurewebsites.net/UpdateContact.php" method ="post">
+		<form action ="UpdateContact.php" method ="post">
 			<input type = 'submit' name = 'UpdateContacts' value = 'Update Contact' />
 			<br><br>
 		</form>
-		<form action ="http://ogf926.azurewebsites.net/DeleteContact.php" method ="post">
+		<form action ="DeleteContact.php" method ="post">
 			<input type = 'submit' name = 'Delete Contact' value = 'Delete Contact' />
 			<br><br>
 		</form>
