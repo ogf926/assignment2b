@@ -30,7 +30,7 @@
 			echo "above connection";
 			$sql = $conn->prepare("INSERT INTO AddressBook (firstname, lastname, company, phone, email, address, birthday, note) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 			$sql->bind_param("sssissss", $fname, $lname, $cname, $phnum, $email, $address, $bday, $notes);
-			
+			echo "above form complete";
 			$formcomplete = TRUE;
 			
 			echo "above server";
