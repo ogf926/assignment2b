@@ -32,6 +32,7 @@
 			
 			$formcomplete = TRUE;
 			
+			echo "above server";
 			if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			   if (empty($_POST["fname"])) {
 				 $fnameErr = "* Name is required";
@@ -44,7 +45,7 @@
 				   $formcomplete = FALSE;
 				 }
 			   }
-			   
+			   echo "above lname";
 			   if (empty($_POST["lname"])) {
 				 $lnameErr = "* Name is required";
 				 $formcomplete = FALSE;
@@ -56,7 +57,7 @@
 				   $formcomplete = FALSE;
 				 }
 			   }
-			   
+			   echo "above email";
 			   if (empty($_POST["email"])) {
 				 $email = "";
 			   } else {
@@ -67,7 +68,7 @@
 				   $formcomplete = FALSE;
 				 }
 			   }
-				 
+				echo "above ph"; 
 			   if (empty($_POST["phnum"])) {
 				 $phnumErr = "* A phone number is required";
 				 $formcomplete = FALSE;
@@ -76,13 +77,13 @@
 				 // check if URL address syntax is valid (this regular expression also allows dashes in the URL)
 				 
 			   }
-
+				echo "above notes";
 			   if (empty($_POST["notes"])) {
 				 $notes = "";
 			   } else {
 				 $notes = test_input($_POST["notes"]);
 			   }
-			   
+			   echo "above cname";
 			   if (empty($_POST["cname"])) {
 				 $cname = "";
 			   } else {
@@ -106,7 +107,7 @@
 				 }
 				 
 			   }
-			   
+			   echo "above execute";
 			   if ($formcomplete == TRUE ){
 				   $sql->execute();
 				   echo ("contact added");
