@@ -18,7 +18,7 @@
 			$dbname="azuredb";
 			
 			try{
-                $conn = new PDO( "sqlsrv:Server= $server ; Database = $db ", $username, $password);
+                $conn = new PDO( "sqlsrv:Server= $servername ; Database = $dbname ", $username, $password);
                 $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
                 //echo "Connection successfully</br>";
             }
