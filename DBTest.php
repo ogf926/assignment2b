@@ -31,11 +31,14 @@
 				note VARCHAR(255)
 			)";
 			
-			if($conn->query($sql) == TRUE)
-				echo "Table AddressBook created succefully";
-			else
-				echo "Error creating table: ".$conn->error;
+			try{
+				$result = $conn->query($sql);
+				echo "Table created";
+			}
 			
+			catch(Exception $e){
+				print_r($e);
+			}
 		 ?> 
 	</body>
 </html>

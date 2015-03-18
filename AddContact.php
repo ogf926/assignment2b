@@ -112,12 +112,12 @@
 				   echo ("contact added");
 			   }
 			}
-		function test_input($data) {
-		   $data = trim($data);
-		   $data = stripslashes($data);
-		   $data = htmlspecialchars($data);
-		   return $data;
-		}	
+			function test_input($data) {
+			   $data = trim($data);
+			   $data = stripslashes($data);
+			   $data = htmlspecialchars($data);
+			   return $data;
+			}	
 		?>
 		<h2>Add Contact</h2>
 		<p><span class="error">* required field.</span></p>
