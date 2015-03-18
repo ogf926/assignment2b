@@ -20,7 +20,7 @@
             }
 			
 			$sql = "CREATE TABLE AddressBook(
-				id INT AUTO_INCREMENT PRIMARY KEY,
+				id INT IDENTITY(1,1),
 				firstname VARCHAR(30) NOT NULL,
 				lastname VARCHAR(30) NOT NULL,
 				company VARCHAR(30),
@@ -28,7 +28,8 @@
 				email VARCHAR(255),
 				address VARCHAR(255) NOT NULL,
 				birthday DATE,
-				note VARCHAR(255)
+				note VARCHAR(255),
+				PRIMARY KEY(id)
 			)";
 			
 			try{
