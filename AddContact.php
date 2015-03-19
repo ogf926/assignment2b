@@ -72,7 +72,7 @@
 					   $formcomplete = FALSE;
 					 }
 				   }
-					echo "above ph"; 
+					
 				   if (empty($_POST["phnum"])) {
 					 $phnumErr = "* A phone number is required";
 					 $formcomplete = FALSE;
@@ -118,7 +118,7 @@
 				   }
 				}
 			} catch(Exception $e){
-				echo "Error Adding contact";
+				echo "Error Adding contact ".$e->getMessage()."";
 			
 			}
 			function test_input($data) {
