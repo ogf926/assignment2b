@@ -28,26 +28,23 @@
 			
 			$sql = "SELECT id, firstname, lastname, company, phone, email, address, note FROM AddressBook";
 			$result = $conn->query($sql);
-			$stmt = $conn->prepare("UPDATE AddressBook SET firstname=?, lastname=?, company=?, phone=?, email=?, address=?, birthday=?, note=? WHERE id = ?");
-			$stmt->bind_param("sssissssi", $fname, $lname, $cname, $phnum, $email, $address, $bday, $notes, $idnum);
+			$stmt = $conn->prepare("UPDATE AddressBook SET firstname='".$_POST['fname']."', lastname='".$_POST['lname']."', company='".$_POST['cname']."', phone='".$_POST['phnum']."', email='".$_POST['email']."', address='".$_POST['addy']."', birthday='".$_POST['bday']."', note='".$_POST['notes']."' WHERE id = '".$_POST['idnum']."'");
+			//$stmt->bind_param("sssissssi", $fname, $lname, $cname, $phnum, $email, $address, $bday, $notes, $idnum);
 			
 			$idnumErr = $idnum ="";
 			$formcomplete = TRUE;
 			$fnameErr = $lnameErr = $emailErr = $bdayErr = $phnumErr = "";
 			$fname = $lname = $email = $cname = $notes = $phnum = $address = $bday = "";
 			
-			if ($result->num_rows > 0) {
-				// output data of each row
-				echo '<table style="width:50%">';
-				echo "<tr> <td><b>ID:</b></td> <td><b>First Name:</b></td> <td><b>Last Name:</b></td> <td><b>Company:</b></td> <td><b>Phone:</b></td> <td><b>Email:</b></td> <td><b>Address:</b></td> <td><b>Notes:</b></td></tr>";
-				while($row = $result->fetch(PDO::FETCH_ASSOC)) {
-					echo "<tr>"."<td>".$row["id"]."</td>"."<td>".$row["firstname"]."</td>"."<td>".$row["lastname"]."</td>"."<td>".$row["company"]."</td>"."<td>".$row["phone"]."</td>"."<td>".$row["email"]."</td>"."<td>".$row["address"]."</td>"."<td>".$row["note"]."</td>"."</tr>";
-				}
-				echo "</table><br><br>";
-				
-			} else {
-				echo "No Contacts in the address book.";
+			
+			// output data of each row
+			echo '<table style="width:50%">';
+			echo "<tr> <td><b>ID:</b></td> <td><b>First Name:</b></td> <td><b>Last Name:</b></td> <td><b>Company:</b></td> <td><b>Phone:</b></td> <td><b>Email:</b></td> <td><b>Address:</b></td> <td><b>Notes:</b></td></tr>";
+			while($row = $result->fetch(PDO::FETCH_ASSOC)) {
+				echo "<tr>"."<td>".$row["id"]."</td>"."<td>".$row["firstname"]."</td>"."<td>".$row["lastname"]."</td>"."<td>".$row["company"]."</td>"."<td>".$row["phone"]."</td>"."<td>".$row["email"]."</td>"."<td>".$row["address"]."</td>"."<td>".$row["note"]."</td>"."</tr>";
 			}
+			echo "</table><br><br>";
+			
 			if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			   if (empty($_POST["idnum"])) {
 				 $idnumErr = "* ID number is required";

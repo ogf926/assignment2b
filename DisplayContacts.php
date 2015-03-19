@@ -30,18 +30,14 @@
 			$result = $conn->query($sql);
 			
 			
-			//if ($result->num_rows > 0) {
-				// output data of each row
-				echo '<table style="width:50%">';
-				echo "<tr> <td><b>ID:</b></td> <td><b>First Name:</b></td> <td><b>Last Name:</b></td> <td><b>Company:</b></td> <td><b>Phone:</b></td> <td><b>Email:</b></td> <td><b>Address:</b></td> <td><b>Notes:</b></td></tr>";
-				while($row = $result->fetch(PDO::FETCH_ASSOC)) {
-					echo "<tr>"."<td>".$row["id"]."</td>"."<td>".$row["firstname"]."</td>"."<td>".$row["lastname"]."</td>"."<td>".$row["company"]."</td>"."<td>".$row["phone"]."</td>"."<td>".$row["email"]."</td>"."<td>".$row["address"]."</td>"."<td>".$row["note"]."</td>"."</tr>";
-				}
-				echo "</table><br><br>";
-				
-			//} else {
-			//	echo "No Contacts in the address book.";
-			//}
+			
+			echo '<table style="width:50%">';
+			echo "<tr> <td><b>ID:</b></td> <td><b>First Name:</b></td> <td><b>Last Name:</b></td> <td><b>Company:</b></td> <td><b>Phone:</b></td> <td><b>Email:</b></td> <td><b>Address:</b></td> <td><b>Notes:</b></td></tr>";
+			while($row = $result->fetch(PDO::FETCH_ASSOC)) {
+				echo "<tr>"."<td>".$row["id"]."</td>"."<td>".$row["firstname"]."</td>"."<td>".$row["lastname"]."</td>"."<td>".$row["company"]."</td>"."<td>".$row["phone"]."</td>"."<td>".$row["email"]."</td>"."<td>".$row["address"]."</td>"."<td>".$row["note"]."</td>"."</tr>";
+			}
+			echo "</table><br><br>";
+			
 		 ?> 
 		 <form action ="homefin.php" method ="post">
 			<input type = 'submit' name = 'Return Home' value = 'Return Home' />
