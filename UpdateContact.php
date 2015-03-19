@@ -139,7 +139,7 @@
 				   }
 			   }
 			}
-			$conn->close();
+			echo "here";
 			
 			function test_input($data) {
 			   $data = trim($data);
