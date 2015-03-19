@@ -24,7 +24,7 @@
 				firstname VARCHAR(30) NOT NULL,
 				lastname VARCHAR(30) NOT NULL,
 				company VARCHAR(30),
-				phone INT NOT NULL,
+				phone BIGINT NOT NULL,
 				email VARCHAR(255),
 				address VARCHAR(255) NOT NULL,
 				birthday DATE,
