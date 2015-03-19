@@ -32,14 +32,14 @@
 				$sql = $conn->prepare("INSERT INTO AddressBook (firstname, lastname, company, phone, email, address, birthday, note) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 				echo "above form complete";
 				//$sql->bind_param("sssissss", $fname, $lname, $cname, $phnum, $email, $address, $bday, $notes);
-				$sql->bind_param(1, $fname, PDO::PARAM_STR);
-				$sql->bind_param(2, $lname, PDO::PARAM_STR);
-				$sql->bind_param(3, $cname, PDO::PARAM_STR);
+				$sql->bind_param(1, $fname, PDO::PARAM_STR, 30);
+				$sql->bind_param(2, $lname, PDO::PARAM_STR, 30);
+				$sql->bind_param(3, $cname, PDO::PARAM_STR, 30);
 				$sql->bind_param(4, $phnum, PDO::PARAM_INT);
-				$sql->bind_param(5, $email, PDO::PARAM_STR);
-				$sql->bind_param(6, $address, PDO::PARAM_STR);
-				$sql->bind_param(7, $bday, PDO::PARAM_STR);
-				$sql->bind_param(8, $notes, PDO::PARAM_STR);
+				$sql->bind_param(5, $email, PDO::PARAM_STR, 255);
+				$sql->bind_param(6, $address, PDO::PARAM_STR, 255);
+				$sql->bind_param(7, $bday, PDO::PARAM_STR, 255);
+				$sql->bind_param(8, $notes, PDO::PARAM_STR, 255);
 				
 				
 				$formcomplete = TRUE;
@@ -126,7 +126,7 @@
 				   }
 				}
 			} catch(Exception $e){
-				echo "Error updating contact";
+				echo "Error Adding contact";
 			
 			}
 			function test_input($data) {
