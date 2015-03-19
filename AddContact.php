@@ -29,18 +29,9 @@
 			$fname = $lname = $email = $cname = $notes = $phnum = $address = $bday = "";
 			echo "above connection";
 			try {
-				$sql = $conn->prepare("INSERT INTO AddressBook (firstname, lastname, company, phone, email, address, birthday, note) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+				$sql = $conn->prepare("INSERT INTO AddressBook (firstname, lastname, company, phone, email, address, birthday, note) VALUES ('".$_POST['fname']."', '".$_POST['lname']."', '".$_POST['cname']."', '".$_POST['phnum']."', '".$_POST['email']."', '".$_POST['addy']."', '".$_POST['bday']."', '".$_POST['notes']."')");
 				echo "above form complete";
 				//$sql->bind_param("sssissss", $fname, $lname, $cname, $phnum, $email, $address, $bday, $notes);
-				$sql->bind_param(1, $fname, PDO::PARAM_STR|PDO::PARAM_INPUT_OUTPUT, 30);
-				$sql->bind_param(2, $lname, PDO::PARAM_STR|PDO::PARAM_INPUT_OUTPUT, 30);
-				$sql->bind_param(3, $cname, PDO::PARAM_STR|PDO::PARAM_INPUT_OUTPUT, 30);
-				echo "here";
-				$sql->bind_param(4, $phnum, PDO::PARAM_INT);
-				$sql->bind_param(5, $email, PDO::PARAM_STR, 255);
-				$sql->bind_param(6, $address, PDO::PARAM_STR, 255);
-				$sql->bind_param(7, $bday, PDO::PARAM_STR, 255);
-				$sql->bind_param(8, $notes, PDO::PARAM_STR, 255);
 				
 				
 				$formcomplete = TRUE;
