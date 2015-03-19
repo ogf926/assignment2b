@@ -30,7 +30,7 @@
 			$result = $conn->query($sql);
 			
 			
-			if ($result->num_rows > 0) {
+			//if ($result->num_rows > 0) {
 				// output data of each row
 				echo '<table style="width:50%">';
 				echo "<tr> <td><b>ID:</b></td> <td><b>First Name:</b></td> <td><b>Last Name:</b></td> <td><b>Company:</b></td> <td><b>Phone:</b></td> <td><b>Email:</b></td> <td><b>Address:</b></td> <td><b>Notes:</b></td></tr>";
@@ -39,9 +39,9 @@
 				}
 				echo "</table><br><br>";
 				
-			} else {
-				echo "No Contacts in the address book.";
-			}
+			//} else {
+			//	echo "No Contacts in the address book.";
+			//}
 		 ?> 
 		 <form action ="homefin.php" method ="post">
 			<input type = 'submit' name = 'Return Home' value = 'Return Home' />
