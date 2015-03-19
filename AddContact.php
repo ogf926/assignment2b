@@ -28,91 +28,96 @@
 			$fnameErr = $lnameErr = $emailErr = $bdayErr = $phnumErr = "";
 			$fname = $lname = $email = $cname = $notes = $phnum = $address = $bday = "";
 			echo "above connection";
-			$sql = $conn->prepare("INSERT INTO AddressBook (firstname, lastname, company, phone, email, address, birthday, note) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-			$sql->bind_param("sssissss", $fname, $lname, $cname, $phnum, $email, $address, $bday, $notes);
-			echo "above form complete";
-			$formcomplete = TRUE;
-			
-			echo "above server";
-			if ($_SERVER["REQUEST_METHOD"] == "POST") {
-			   if (empty($_POST["fname"])) {
-				 $fnameErr = "* Name is required";
-				 $formcomplete = FALSE;
-			   } else {
-				 $fname = test_input($_POST["fname"]);
-				 // check if name only contains letters and whitespace
-				 if (!preg_match("/^[a-zA-Z ]*$/",$fname)) {
-				   $fnameErr = "* Only letters and white space allowed"; 
-				   $formcomplete = FALSE;
-				 }
-			   }
-			   echo "above lname";
-			   if (empty($_POST["lname"])) {
-				 $lnameErr = "* Name is required";
-				 $formcomplete = FALSE;
-			   } else {
-				 $lname = test_input($_POST["lname"]);
-				 // check if name only contains letters and whitespace
-				 if (!preg_match("/^[a-zA-Z ]*$/",$lname)) {
-				   $lnameErr = "* Only letters and white space allowed"; 
-				   $formcomplete = FALSE;
-				 }
-			   }
-			   echo "above email";
-			   if (empty($_POST["email"])) {
-				 $email = "";
-			   } else {
-				 $email = test_input($_POST["email"]);
-				 // check if e-mail address is well-formed
-				 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-				   $emailErr = "* Invalid email format"; 
-				   $formcomplete = FALSE;
-				 }
-			   }
-				echo "above ph"; 
-			   if (empty($_POST["phnum"])) {
-				 $phnumErr = "* A phone number is required";
-				 $formcomplete = FALSE;
-			   } else {
-				 $phnum = test_input($_POST["phnum"]);
-				 // check if URL address syntax is valid (this regular expression also allows dashes in the URL)
-				 
-			   }
-				echo "above notes";
-			   if (empty($_POST["notes"])) {
-				 $notes = "";
-			   } else {
-				 $notes = test_input($_POST["notes"]);
-			   }
-			   echo "above cname";
-			   if (empty($_POST["cname"])) {
-				 $cname = "";
-			   } else {
-				 $cname = test_input($_POST["cname"]);
-			   }
-			   
-			   if (empty($_POST["address"])) {
-				 $address = "";
-			   } else {
-				 $address = test_input($_POST["address"]);
-			   }
+			try {
+				$sql = $conn->prepare("INSERT INTO AddressBook (firstname, lastname, company, phone, email, address, birthday, note) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+				$sql->bind_param("sssissss", $fname, $lname, $cname, $phnum, $email, $address, $bday, $notes);
+				echo "above form complete";
+				$formcomplete = TRUE;
+				
+				echo "above server";
+				if ($_SERVER["REQUEST_METHOD"] == "POST") {
+				   if (empty($_POST["fname"])) {
+					 $fnameErr = "* Name is required";
+					 $formcomplete = FALSE;
+				   } else {
+					 $fname = test_input($_POST["fname"]);
+					 // check if name only contains letters and whitespace
+					 if (!preg_match("/^[a-zA-Z ]*$/",$fname)) {
+					   $fnameErr = "* Only letters and white space allowed"; 
+					   $formcomplete = FALSE;
+					 }
+				   }
+				   echo "above lname";
+				   if (empty($_POST["lname"])) {
+					 $lnameErr = "* Name is required";
+					 $formcomplete = FALSE;
+				   } else {
+					 $lname = test_input($_POST["lname"]);
+					 // check if name only contains letters and whitespace
+					 if (!preg_match("/^[a-zA-Z ]*$/",$lname)) {
+					   $lnameErr = "* Only letters and white space allowed"; 
+					   $formcomplete = FALSE;
+					 }
+				   }
+				   echo "above email";
+				   if (empty($_POST["email"])) {
+					 $email = "";
+				   } else {
+					 $email = test_input($_POST["email"]);
+					 // check if e-mail address is well-formed
+					 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+					   $emailErr = "* Invalid email format"; 
+					   $formcomplete = FALSE;
+					 }
+				   }
+					echo "above ph"; 
+				   if (empty($_POST["phnum"])) {
+					 $phnumErr = "* A phone number is required";
+					 $formcomplete = FALSE;
+				   } else {
+					 $phnum = test_input($_POST["phnum"]);
+					 // check if URL address syntax is valid (this regular expression also allows dashes in the URL)
+					 
+				   }
+					echo "above notes";
+				   if (empty($_POST["notes"])) {
+					 $notes = "";
+				   } else {
+					 $notes = test_input($_POST["notes"]);
+				   }
+				   echo "above cname";
+				   if (empty($_POST["cname"])) {
+					 $cname = "";
+				   } else {
+					 $cname = test_input($_POST["cname"]);
+				   }
+				   
+				   if (empty($_POST["address"])) {
+					 $address = "";
+				   } else {
+					 $address = test_input($_POST["address"]);
+				   }
 
-			   
-			   if (empty($_POST["bday"])) {
-				 $bday = "";
-			   } else {
-				 $bday = test_input($_POST["bday"]);
-				 if (!preg_match("/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/",$bday)) {
-				   $bdayErr = "* Please enter the birthday in this format: XXXX-XX-XX"; 
-				   $formcomplete = FALSE;
-				 }
-				 
-			   }
-			   echo "above execute";
-			   if ($formcomplete == TRUE ){
-				   $sql->execute();
-				   echo ("contact added");
-			   }
+				   
+				   if (empty($_POST["bday"])) {
+					 $bday = "";
+				   } else {
+					 $bday = test_input($_POST["bday"]);
+					 if (!preg_match("/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/",$bday)) {
+					   $bdayErr = "* Please enter the birthday in this format: XXXX-XX-XX"; 
+					   $formcomplete = FALSE;
+					 }
+					 
+				   }
+				   echo "above execute";
+				   if ($formcomplete == TRUE ){
+					   $sql->execute();
+					   echo ("contact added");
+				   }
+				}
+			} catch(Exception $e){
+				echo "Error updating contact";
+			
 			}
 			function test_input($data) {
 			   $data = trim($data);
