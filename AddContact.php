@@ -25,11 +25,11 @@
 	
 			// define variables and set to empty values
 			
-			$fnameErr = $lnameErr = $emailErr = $bdayErr = $phnumErr = "";
-			$fname = $lname = $email = $cname = $notes = $phnum = $address = $bday = "";
+			$fnameErr = $lnameErr = $emailErr = $bdayErr = $phnumErr $urlErr = "";
+			$fname = $lname = $email = $cname = $notes = $phnum = $address = $bday = $url = "";
 			
 			try {
-				$sql = $conn->prepare("INSERT INTO AddressBook (firstname, lastname, company, phone, email, address, birthday, note) VALUES ('".$_POST['fname']."', '".$_POST['lname']."', '".$_POST['cname']."', '".$_POST['phnum']."', '".$_POST['email']."', '".$_POST['addy']."', '".$_POST['bday']."', '".$_POST['notes']."')");
+				$sql = $conn->prepare("INSERT INTO AddressBook (firstname, lastname, company, phone, email, address, birthday, note, url) VALUES ('".$_POST['fname']."', '".$_POST['lname']."', '".$_POST['cname']."', '".$_POST['phnum']."', '".$_POST['email']."', '".$_POST['addy']."', '".$_POST['bday']."', '".$_POST['notes']."', '".$_POST['url']."')");
 			
 				//$sql->bind_param("sssissss", $fname, $lname, $cname, $phnum, $email, $address, $bday, $notes);
 				
@@ -94,10 +94,10 @@
 					 $cname = test_input($_POST["cname"]);
 				   }
 				   
-				   if (empty($_POST["address"])) {
+				   if (empty($_POST["addy"])) {
 					 $address = "";
 				   } else {
-					 $address = test_input($_POST["address"]);
+					 $address = test_input($_POST["addy"]);
 				   }
 
 				   
@@ -106,7 +106,19 @@
 				   } else {
 					 $bday = test_input($_POST["bday"]);
 					 if (!preg_match("/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/",$bday)) {
-					   $bdayErr = "* Please enter the birthday in this format: XXXX-XX-XX"; 
+					   $bdayErr = "* Please enter the birthday in this format: YYYY-MM-DD"; 
+					   $formcomplete = FALSE;
+					 }
+					 
+				   }
+				   
+				   if (empty($_POST["url"])) {
+					 $url = "";
+				   } else {
+					 $url = test_input($_POST["url"]);
+					 $_POST["url"]=$url;
+					 if (!preg_match("/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/",$url)) {
+					   $urlErr = "* Please enter a valid url"; 
 					   $formcomplete = FALSE;
 					 }
 					 
@@ -151,6 +163,9 @@
 			<br><br>
 			Notes: <input type="text"  name="notes" id="notes" /></br>
 			<input type="submit" id="submit" />
+			<br><br>
+			URL: <input type="text"  name="url" id="url" />
+			<span class="error"><?php echo $urlErr;?></span>
 			<br><br>
 		</form>
 
